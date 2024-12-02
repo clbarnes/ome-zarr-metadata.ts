@@ -1,0 +1,32 @@
+{
+  "name": "ome-zarr-metadata",
+  "version": "0.5.0",
+  "description": "A typescript library for interacting with OME-Zarr metadata",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "rslib build",
+    "check": "biome check --write",
+    "dev": "rslib build --watch",
+    "format": "biome format --write",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.3",
+    "@rslib/core": "^0.1.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.8.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "private": true
+}
