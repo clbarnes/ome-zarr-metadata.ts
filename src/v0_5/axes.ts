@@ -118,6 +118,21 @@ function axisFromRaw(obj: AxisRaw): Axis {
   return new CustomAxis(obj.name, obj.type, obj.unit);
 }
 
+class UniqueNames {
+  names: Set<string>;
+
+  constructor() {
+    this.names = new Set();
+  }
+
+  add(name: string): void {
+    if (this.names.has(name)) {
+      throw new Error(`Repeated axis name: ${name}`);
+    }
+    this.names.add(name);
+  }
+}
+
 export class Axes {
   time?: TimeAxis;
   space: SpaceAxis[];
@@ -134,8 +149,18 @@ export class Axes {
     }
     this.space = space;
 
+    const names = new UniqueNames();
+    for (const s of space) {
+      names.add(s.name);
+    }
+
+    if (channelOrCustom != null) {
+      names.add(channelOrCustom.name);
+    }
+
     if (channelOrCustom instanceof ChannelAxis) {
       this.channel = channelOrCustom;
+      names.add(channelOrCustom.name);
     } else if (
       channelOrCustom?.type != null &&
       [SPACE, TIME, CHANNEL].includes(channelOrCustom.type)
@@ -146,6 +171,11 @@ export class Axes {
     } else {
       this.custom = channelOrCustom;
     }
+
+    if (time != null) {
+      names.add(time.name);
+    }
+
     this.time = time;
   }
 
