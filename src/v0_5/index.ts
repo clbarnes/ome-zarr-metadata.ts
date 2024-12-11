@@ -1,8 +1,6 @@
 import { ImageLabel, type ImageLabelRaw } from './imageLabel';
 import { Multiscale, type MultiscaleRaw } from './multiscales';
 
-export { ImageLabel } from './imageLabel';
-
 export interface OmeRaw {
   version: string;
   multiscales?: MultiscaleRaw[];

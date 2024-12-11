@@ -2,7 +2,7 @@ export const SPACE = 'space';
 export const TIME = 'time';
 export const CHANNEL = 'channel';
 
-abstract class Axis {
+export abstract class Axis {
   name: string;
   type?: string;
   unit?: string;
@@ -160,7 +160,6 @@ export class Axes {
 
     if (channelOrCustom instanceof ChannelAxis) {
       this.channel = channelOrCustom;
-      names.add(channelOrCustom.name);
     } else if (
       channelOrCustom?.type != null &&
       [SPACE, TIME, CHANNEL].includes(channelOrCustom.type)
