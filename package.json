@@ -1,6 +1,6 @@
 {
   "name": "ome-zarr-metadata",
-  "version": "0.5.0",
+  "version": "0.5.0.1",
   "description": "A typescript library for interacting with OME-Zarr metadata",
   "homepage": "https://github.com/clbarnes/ome-zarr-metadata.ts",
   "bugs": { "url": "https://github.com/clbarnes/ome-zarr-metadata.ts/issues" },
